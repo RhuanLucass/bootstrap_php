@@ -1,0 +1,36 @@
+body{
+  background: rgb(225, 225, 225);
+  padding-top: 4rem;
+}
+
+#nav-menu{
+  z-index: 10;
+}
+
+#logo{
+  font-size: 1.6rem;
+}
+
+#header{
+  background: #333;
+}
+
+#main li:not(.active):hover{
+  transition: .3s;
+  background-color: rgba(235, 235, 235);
+}
+
+#main a{
+  text-decoration: none;
+  color: #000;
+  display: inline-block;
+  width: 100%;
+}
+
+#main #ul-aside{
+  top: 5rem;
+}
+
+textarea#code-html{
+  height: 10rem;
+}
