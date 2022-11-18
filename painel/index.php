@@ -1,4 +1,10 @@
-<?php include('../assets/php/pdo.php'); ?>
+<?php
+  include('../assets/php/pdo.php');
+  
+  $sobre = $pdo->prepare("SELECT * FROM tb_sobre");
+  $sobre->execute();
+  $sobre = $sobre->fetch()['sobre'];
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
