@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 5.2.0
+- https://www.phpmyadmin.net
+-
+- Host: 127.0.0.1
+- Tempo de geração: 22-Nov-2022 às 13:54
+- Versão do servidor: 10.4.24-MariaDB
+- versão do PHP: 8.1.6
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="https://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="bootstrap_php" collation="utf8mb4_general_ci" charset="utf8mb4">
+            <pma:table name="tb_equipe">
+                CREATE TABLE `tb_equipe` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `nome` varchar(255) NOT NULL,
+                  `descricao` text NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+            </pma:table>
+            <pma:table name="tb_sobre">
+                CREATE TABLE `tb_sobre` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `sobre` longtext NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=utf8mb4;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - Banco de dados: 'bootstrap_php'
+    -->
+    <database name="bootstrap_php">
+        <!-- Tabela tb_equipe -->
+        <table name="tb_equipe">
+            <column name="id">2</column>
+            <column name="nome">Carlos</column>
+            <column name="descricao">Administrador</column>
+        </table>
+        <table name="tb_equipe">
+            <column name="id">3</column>
+            <column name="nome">João</column>
+            <column name="descricao">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#039;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specim</column>
+        </table>
+        <table name="tb_equipe">
+            <column name="id">5</column>
+            <column name="nome">Pedro</column>
+            <column name="descricao">CEO</column>
+        </table>
+        <table name="tb_equipe">
+            <column name="id">6</column>
+            <column name="nome">Chico</column>
+            <column name="descricao">Desenvolvedor</column>
+        </table>
+        <!-- Tabela tb_sobre -->
+        <table name="tb_sobre">
+            <column name="id">1</column>
+            <column name="sobre">&lt;div class=&quot;col-md-4&quot;&gt;
+          &lt;h3&gt;&lt;i class=&quot;bi bi-browser-chrome&quot;&gt;&lt;/i&gt;&lt;/h3&gt;
+          &lt;h4&gt;Diferencial #1&lt;/h4&gt;
+          &lt;p class=&quot;&quot;&gt;Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae cupiditate dolore ullam minima illum aliquid aliquam possimus excepturi quis tempora, deserunt facilis quam, dolores reiciendis ipsam hic beatae officia modi.&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;col-md-4&quot;&gt;
+          &lt;h3&gt;&lt;i class=&quot;bi bi-browser-chrome&quot;&gt;&lt;/i&gt;&lt;/h3&gt;
+          &lt;h4&gt;Diferencial #1&lt;/h4&gt;
+          &lt;p class=&quot;&quot;&gt;Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae cupiditate dolore ullam minima illum aliquid aliquam possimus excepturi quis tempora, deserunt facilis quam, dolores reiciendis ipsam hic beatae officia modi.&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;col-md-4&quot;&gt;
+          &lt;h3&gt;&lt;i class=&quot;bi bi-browser-chrome&quot;&gt;&lt;/i&gt;&lt;/h3&gt;
+          &lt;h4&gt;Diferencial #1&lt;/h4&gt;
+          &lt;p class=&quot;&quot;&gt;Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae cupiditate dolore ullam minima illum aliquid aliquam possimus excepturi quis tempora, deserunt facilis quam, dolores reiciendis ipsam hic beatae officia modi.&lt;/p&gt;
+        &lt;/div&gt;</column>
+        </table>
+    </database>
+</pma_xml_export>
