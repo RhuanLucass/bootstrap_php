@@ -102,16 +102,21 @@ function closeMenu(){
   navbarSite.classList.remove('show');
 }
 
-const btnAbout = document.getElementById('btn-about');
-// btnAbout.addEventListener('click', hideAlert);
+const buttonDelete = document.querySelectorAll('.delete-member');
+buttonDelete.forEach(button => button.addEventListener('click', deleteMember));
 
-function hideAlert(e){
-  e.preventDefault();
+function deleteMember(){
+  const idMember = this.getAttribute('id-member');
+  const el = this.parentNode.parentNode;
+  // console.log(el);
 
-  // sendAjax();
-  // setTimeout(() => {
-  //   const alert = document.getElementsByClassName('alert');
-    
-  // }, 2000);
-  
+  $.ajax({
+    method:'post',
+    data: {'id-member':idMember},
+    url:'assets/php/delete.php'
+  }).done(()=>{
+    $(el).fadeOut(()=>{
+      $(el).remove();
+    });
+  })
 }

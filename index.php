@@ -14,7 +14,7 @@
   <title>BootStrap com PHP</title>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -69,33 +69,26 @@
     <h2 class="py-2 text-center text-white">Equipe</h2>
     <div class="container py-3">
       <div class="row">
+      <?php
+        $members = $pdo->prepare("SELECT nome, descricao FROM tb_equipe");
+        $members->execute();
+        $allMembers = $members->fetchAll();
+        foreach ($allMembers as $key => $value) {
+      ?>
         <div class="col-md-6 mb-2">
-          <div class="equipe-single p-2 rounded">
-            <div class="row">
+          <div class="equipe-single p-2 rounded h-100">
+            <div class="row h-100 d-flex align-items-center">
               <div class="col-lg-3 d-flex align-items-center justify-content-center">
                 <div class="user-picture bg-secondary rounded-circle d-flex justify-content-center align-items-center"><i class="bi bi-person text-white"></i></div>
               </div>
               <div class="col-lg-9">
-                <h4>Rhuan</h3>
-                <p class="m-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium molestiae alias eaque facere placeat veritatis dolore inventore totam deserunt optio provident, et quia? Cumque fugit similique vitae deleniti consequatur velit!</p>
+                <h4><?= $value['nome'] ?></h3>
+                <p class="m-0"><?= $value['descricao'] ?></p>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="col-md-6 mb-2">
-          <div class="equipe-single p-2 rounded">
-            <div class="row">
-              <div class="col-lg-3 d-flex align-items-center justify-content-center">
-              <div class="user-picture bg-secondary rounded-circle d-flex justify-content-center align-items-center"><i class="bi bi-person text-white"></i></div>
-              </div>
-              <div class="col-lg-9">
-                <h4>Rhuan</h3>
-                <p class="m-0">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium molestiae alias eaque facere placeat veritatis dolore inventore totam deserunt optio provident, et quia? Cumque fugit similique vitae deleniti consequatur velit!</p>
-              </div>
-            </div>
-          </div>
-        </div>
+      <?php } ?>
       </div>
     </div>
   </section>

@@ -90,11 +90,7 @@
           </ul>
         </aside>
         <div class="col-md-9 ">
-          <?php
-            if(isset($_POST['edit-about'])){
-              echo '<div class="alert alert-success" role="alert">Código HTML de <b>sobre</b> editado com sucesso!</div>';
-            }
-          ?>
+        <?php include('assets/php/actions.php'); ?>
           <section id="sobre-section" class="card">
             <div class="card-header bg-primary text-white">
               <h5 class="card-title m-0">Sobre</h5>
@@ -104,12 +100,12 @@
                 <div class="row mb-3">
                   <label for="code-html" class="col-sm-12 col-form-label">Código HTML:</label>
                   <div class="col-sm-12">
-                    <textarea class="form-control" id="code-html"><?= $sobre ?></textarea>
+                    <textarea name="sobre" class="form-control" id="code-html" required><?= $sobre ?></textarea>
                   </div>
                 </div>
                 <div class="col-sm-12 text-end">
                   <input type="hidden" name="edit-about" value="">
-                  <button type="submit" name="submit" class="btn btn-primary">Editar</button>
+                  <button id="btn-about" type="submit" class="btn btn-primary">Editar</button>
                 </div>
               </form>
             </div>
@@ -120,20 +116,21 @@
               <h5 class="card-title m-0">Cadastrar Equipe:</h5>
             </div>
             <div class="card-body">
-              <form>
+              <form method="POST">
                 <div class="row mb-3">
                   <label for="name" class="col-sm-12 col-form-label">Nome Membro:</label>
                   <div class="col-sm-12">
-                    <input type="text" class="form-control" id="name">
+                    <input type="text" name="name-member" class="form-control" id="name" required>
                   </div>
                 </div>
                 <div class="row mb-3">
                   <label for="code-html" class="col-sm-12 col-form-label">Descrição do Membro:</label>
                   <div class="col-sm-12">
-                    <textarea class="form-control" id="code-html"></textarea>
+                    <textarea name="description" class="form-control" id="code-html" required></textarea>
                   </div>
                 </div>
                 <div class="col-sm-12 text-end">
+                  <input type="hidden" name="register-team" value="">
                   <button type="submit" class="btn btn-primary">Editar</button>
                 </div>
               </form>
@@ -154,13 +151,17 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <?php for ($i = 0; $i < 5; $i++) { ?>
+                  <?php
+                    $members = $pdo->prepare("SELECT id, nome FROM tb_equipe");
+                    $members->execute();
+                    $allMembers = $members->fetchAll();
+                    foreach ($allMembers as $key => $value) {
+                  ?>
                   <tr>
-                    <td scope="row">1</td>
-                    <td>Rhuan</td>
-                    <td class="d-flex justify-content-between">
-                      <button type="button" class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
-                      <button type="button" class="btn btn-warning"><i class="bi bi-pencil-fill"></i></button>
+                    <td scope="row"><?= $value['id'] ?></td>
+                    <td><?= $value['nome'] ?></td>
+                    <td class="d-flex justify-content-center">
+                      <button id-member="<?= $value['id'] ?>" type="button" class="btn btn-danger delete-member"><i class="bi bi-trash-fill"></i></button>
                     </td>
                   </tr>
                   <?php } ?>
@@ -173,6 +174,7 @@
     </div>
   </main>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
   <script src="assets/js/script.js"></script>
 </body>
